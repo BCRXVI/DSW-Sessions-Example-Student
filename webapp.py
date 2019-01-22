@@ -19,7 +19,7 @@ def renderMain():
 @app.route('/startOver')
 def startOver():
     #TODO: delete everything from the session
-    
+    session.clear()
     return redirect(url_for('renderMain')) # url_for('renderMain') could be replaced with '/'
 
 @app.route('/page1')
@@ -29,7 +29,8 @@ def renderPage1():
 @app.route('/page2',methods=['GET','POST'])
 def renderPage2():
     #TODO: set the first and last name in the session
-    
+    session["firstName"] = request.form["firstName"]
+    session["lastName"] = request.form["lastName"]
     return render_template('page2.html')
 
 @app.route('/page3',methods=['GET','POST'])
